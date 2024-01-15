@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location Tracker</title>
+</head>
+<body>
+
+<h1>Location Tracker</h1>
+<textarea id="locationData" rows="10" cols="50"></textarea>
+
+<script>
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        document.getElementById("locationData").value = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+
+    var locationData = document.getElementById("locationData");
+    locationData.value += "Latitude: " + latitude + ", Longitude: " + longitude + "\n";
+}
+
+// 1秒ごとに位置情報を取得
+setInterval(getLocation, 1000);
+</script>
+
+</body>
+</html>
