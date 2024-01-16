@@ -9,6 +9,7 @@
 
 <h1>Location Tracker</h1>
 <textarea id="locationData" rows="10" cols="50"></textarea>
+<button id="button">Copy</button>
 
 <script>
 function getLocation() {
@@ -24,11 +25,24 @@ function showPosition(position) {
     var longitude = position.coords.longitude;
 
     var locationData = document.getElementById("locationData");
-    locationData.value += "Latitude: " + latitude + ", Longitude: " + longitude + "\n";
+    locationData.value += "lat: " + latitude + ", lon: " + longitude + "\n";
 }
+
+
+const btn = document.getElementById('button'); // button要素取得
+const txt = document.getElementById('locationData').value; // テキスト取得
+
+btn.addEventListener('click', () => {
+  navigator.clipboard.writeText(txt);
+
+  btn.innerHTML = 'OK!';
+  setTimeout(() => (btn.innerHTML = 'Copy'), 1000);
+});
 
 // 1秒ごとに位置情報を取得
 setInterval(getLocation, 1000);
+
+
 </script>
 
 </body>
