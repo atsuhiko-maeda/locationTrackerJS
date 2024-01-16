@@ -30,10 +30,10 @@ function showPosition(position) {
 
 
 const btn = document.getElementById('button'); // button要素取得
-const txt = document.getElementById('locationData').value; // テキスト取得
 
 btn.addEventListener('click', () => {
-  navigator.clipboard.writeText(txt);
+    const txt = document.getElementById('locationData').value; // テキスト取得
+    navigator.clipboard.writeText(txt);
 
   btn.innerHTML = 'OK!';
   setTimeout(() => (btn.innerHTML = 'Copy'), 1000);
